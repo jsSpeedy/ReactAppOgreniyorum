@@ -9,8 +9,6 @@ import { Button, Checkbox, Input, Textarea, Container, Stack, Grid } from '@mant
 // }
 
 const App = () => {
-  const [title, setTitle] = useState("");
-  const [paragraf, setParagraf] = useState("");
   const [list, setList] = useState([
     {
       title: "dağ 1",
@@ -29,6 +27,8 @@ const App = () => {
       par: "açıklama 4"
     }
   ]);
+  const [title, setTitle] = useState("");
+  const [paragraf, setParagraf] = useState("");
   const [lesson, setLesson] = useState(11);
   const click = () => {
     setTitle("");
@@ -72,7 +72,19 @@ const App = () => {
           list.map(({ title, par }, index) => {
             return (
               <Grid.Col span={{ base: 12, md: 6, lg: 4 }} key={`index ${index}`}>
-                <CardComponent title={title} par={par} lesson={lesson} i={index} />
+                <CardComponent 
+                title={title} 
+                par={par} 
+                lesson={lesson} 
+                i={index} 
+                click={() =>
+                  {
+                    const copyList = [...list];
+                    copyList.splice(index,1);//kartı silme işlemini gerçekleştirdik.
+                    setList(copyList);
+                  }
+                }
+                />
               </Grid.Col>
             )
           })
