@@ -22,7 +22,6 @@ const App = () => {
       title: "dağ 3",
       par: "açıklama 3"
     },
-    ,
     {
       title: "dağ 4",
       par: "açıklama 4"
